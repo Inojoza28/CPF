@@ -7,7 +7,7 @@
 
 Uma ferramenta moderna para validação segura de documentos brasileiros, desenvolvida com foco em privacidade e experiência do usuário.
 
-**Live Demo**: [https://seu-site.com/validadoc](https://inojoza28.github.io/CPF)
+**Live Demo**: [https://inojoza28.github.io/ValidaDoc](https://inojoza28.github.io/ValidaDoc)
 
 ## ✨ Funcionalidades Principais
 
