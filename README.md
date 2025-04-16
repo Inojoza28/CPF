@@ -1,9 +1,7 @@
 # 📑 ValidaDoc - Validador Seguro de CPF/CNPJ
 
-![GitHub](https://img.shields.io/github/license/inojoza28/validadoc)
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow.svg)
 ![Security](https://img.shields.io/badge/Security-100%25%20Client--Side-brightgreen)
-![Privacy](https://img.shields.io/badge/Privacy-Zero%20Data%20Collection-blueviolet)
 
 Uma ferramenta moderna para validação segura de documentos brasileiros, desenvolvida com foco em privacidade e experiência do usuário.
 
@@ -33,7 +31,7 @@ Uma ferramenta moderna para validação segura de documentos brasileiros, desenv
 
 1. Clone o repositório:
 ```bash
-git clone https://github.com/inojoza28/CPF.git
+git clone https://github.com/inojoza28/ValidaDoc.git
 ```
 
 2. Abra o arquivo `index.html` em qualquer navegador moderno.
@@ -67,19 +65,6 @@ git clone https://github.com/inojoza28/CPF.git
 | Algoritmos Oficiais | Precisão garantida |
 | Auto-destruição de Dados | Informações não persistem após validação |
 
-## 🤝 Como Contribuir
-
-1. Faça um Fork do projeto
-2. Crie sua Branch (`git checkout -b feature/nova-feature`)
-3. Commit suas mudanças (`git commit -m 'Adiciona nova feature'`)
-4. Push para a Branch (`git push origin feature/nova-feature`)
-5. Abra um Pull Request
-
-**Contribuições são bem-vindas!** Priorizamos melhorias em:
-- Acessibilidade
-- Performance
-- Novos algoritmos de validação
-- Documentação técnica
 
 ## 📄 Licença
 
@@ -94,4 +79,3 @@ Distribuído sob licença MIT. Veja `LICENSE` para mais informações.
 ---
 
 **Nota Legal**: Esta ferramenta verifica apenas a validade matemática do documento. Não substitui consultas oficiais nos órgãos competentes.
-```
