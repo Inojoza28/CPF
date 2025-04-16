@@ -1,6 +1,6 @@
 # 📑 ValidaDoc - Validador Seguro de CPF/CNPJ
 
-![GitHub](https://img.shields.io/github/license/seu-usuario/validadoc)
+![GitHub](https://img.shields.io/github/license/inojoza28/validadoc)
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow.svg)
 ![Security](https://img.shields.io/badge/Security-100%25%20Client--Side-brightgreen)
 ![Privacy](https://img.shields.io/badge/Privacy-Zero%20Data%20Collection-blueviolet)
