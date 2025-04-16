@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Meta Description -->
+    <meta name="description" content="Valide documentos brasileiros com segurança! Validador oficial de CPF e CNPJ 100% client-side. Verificação em tempo real usando algoritmos da Receita Federal, sem armazenamento de dados. Resultados instantâneos e detalhados.">
+    <!-- Meta Keywords -->
+    <meta name="keywords" content="validador CPF, validador CNPJ, documento brasileiro, validação segura, Receita Federal, algoritmo oficial, privacidade de dados, validação client-side, verificação de identidade, consulta documento online, validador CPF CNPJ online, segurança de dados, validador oficial Brasil">
+    <!-- Meta Author -->
+    <meta name="author" content="Gabriel Inojoza">
+    <link rel="icon" href="img/logo.png" type="image/x-icon">
+    <title>Validador de CPF/CNPJ - Seguro e Confiável</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <header class="bg-gray-800 shadow-md py-4">
+        <div class="container mx-auto px-4 md:px-6 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="bg-blue-600 text-white p-2 rounded-lg mr-3">
+                    <i class="fas fa-shield-alt text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl md:text-2xl font-bold text-white">ValidaDoc</h1>
+                    <p class="text-gray-300 text-xs md:text-sm">Validação segura de documentos</p>                    
+                </div>
+            </div>
+            <div class="hidden md:flex items-center">
+                <div class="ssl-badge rounded-full py-1 px-3 text-white text-xs flex items-center mr-2">
+                    <i class="fas fa-lock mr-1"></i>
+                    <span>SSL Seguro</span>
+                </div>
+                <div class="verified-badge rounded-full py-1 px-3 text-white text-xs flex items-center">
+                    <i class="fas fa-check-circle mr-1"></i>
+                    <span>Verificado</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 md:px-6 py-6 md:py-10">
+        <div class="max-w-3xl mx-auto">
+            <!-- Introduction Card -->
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                <div class="flex items-start">
+                    <div class="bg-blue-100 p-3 rounded-full mr-4">
+                        <i class="fas fa-info-circle text-blue-700 text-xl"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-lg md:text-xl font-semibold text-gray-800 mb-2">Validação Segura e Confiável</h2>
+                        <p class="text-gray-600 text-sm md:text-base">
+                            Nosso validador utiliza os algoritmos oficiais da Receita Federal para verificar CPF e CNPJ. 
+                            Todos os dados são processados localmente no seu navegador — nenhuma informação é armazenada ou transmitida.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Validator Card -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden mb-6">
+                <div class="bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-4">
+                    <h2 class="text-white text-lg md:text-xl font-semibold">Validador de CPF/CNPJ</h2>
+                    <p class="text-blue-100 text-sm md:text-base">Digite um CPF ou CNPJ para validação instantânea</p>
+                </div>
+                
+                <div class="p-6">
+                    <!-- Document Type Selector -->
+                    <div class="mb-6 flex justify-center">
+                        <div class="inline-flex rounded-md shadow-sm" role="group">
+                            <button id="cpfBtn" type="button" class="px-5 py-2.5 text-sm font-medium text-white bg-blue-600 border border-blue-600 rounded-l-lg hover:bg-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-white transition-all duration-200">
+                                <i class="fas fa-user mr-2"></i>CPF
+                            </button>
+                            <button id="cnpjBtn" type="button" class="px-5 py-2.5 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-r-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 transition-all duration-200">
+                                <i class="fas fa-building mr-2"></i>CNPJ
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Input Field -->
+                    <div class="relative mb-6">
+                        <div class="flex">
+                            <div class="relative w-full">
+                                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                    <i id="document-icon" class="fas fa-id-card text-gray-500"></i>
+                                </div>
+                                <input type="text" id="document-input" class="input-mask focus-ring bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:border-blue-500 block w-full pl-10 p-3 transition-all duration-200" placeholder="000.000.000-00" maxlength="14">
+                                <div class="success-checkmark absolute inset-y-0 right-0 flex items-center pr-3">
+                                    <i id="valid-icon" class="fas fa-check-circle text-green-500 text-lg hidden"></i>
+                                    <i id="invalid-icon" class="fas fa-times-circle text-red-500 text-lg hidden"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p id="validation-message" class="mt-2 text-sm"></p>
+                    </div>
+                    
+                    <!-- Validate Button -->
+                    <button id="validate-btn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition-all duration-300 flex items-center justify-center shadow-md hover:shadow-lg">
+                        <i class="fas fa-check-double mr-2"></i>
+                        <span>Validar documento</span>
+                    </button>
+                    
+                    <!-- Result Card -->
+                    <div id="result-card" class="mt-6 p-4 rounded-lg border hidden overflow-hidden">
+                        <div id="result-content" class="flex items-center"></div>
+                        <div id="result-details" class="mt-3 text-sm"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Security Features -->
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                    <i class="fas fa-shield-alt text-blue-600 mr-2"></i>
+                    Recursos de Segurança
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 security-features">
+                    <div class="flex items-start">
+                        <div class="bg-green-100 p-2 rounded-full mr-3">
+                            <i class="fas fa-lock text-green-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-gray-800">Processamento Local</h4>
+                            <p class="text-gray-600 text-sm">Todos os dados são processados apenas no seu navegador</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="bg-green-100 p-2 rounded-full mr-3">
+                            <i class="fas fa-code text-green-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-gray-800">Código Transparente</h4>
+                            <p class="text-gray-600 text-sm">Algoritmos oficiais da Receita Federal do Brasil</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="bg-green-100 p-2 rounded-full mr-3">
+                            <i class="fas fa-fingerprint text-green-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-gray-800">Privacidade Garantida</h4>
+                            <p class="text-gray-600 text-sm">Sem armazenamento de dados pessoais</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="bg-green-100 p-2 rounded-full mr-3">
+                            <i class="fas fa-check-double text-green-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-gray-800">Validação Precisa</h4>
+                            <p class="text-gray-600 text-sm">Resultados detalhados e verificação completa</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Detailed Information -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="border-b border-gray-200">
+                    <nav class="flex" aria-label="Tabs">
+                        <button id="tab-about" class="tab-btn text-blue-600 border-b-2 border-blue-600 py-4 px-6 block hover:text-blue-600 focus:outline-none text-sm font-medium">
+                            Sobre
+                        </button>
+                        <button id="tab-faq" class="tab-btn text-gray-500 py-4 px-6 block hover:text-blue-600 focus:outline-none text-sm font-medium">
+                            FAQ
+                        </button>
+                        <button id="tab-terms" class="tab-btn text-gray-500 py-4 px-6 block hover:text-blue-600 focus:outline-none text-sm font-medium">
+                            Termos de Uso
+                        </button>
+                    </nav>
+                </div>
+                
+                <div class="p-6">
+                    <!-- Tab Content -->
+                    <div id="tab-content-about" class="tab-content block">
+                        <h3 class="font-semibold text-gray-800 mb-3">Como funciona a validação?</h3>
+                        <p class="text-gray-600 mb-4">
+                            A validação é feita utilizando os algoritmos oficiais estabelecidos pela Receita Federal do Brasil. O processo verifica:
+                        </p>
+                        <ul class="list-disc pl-5 text-gray-600 mb-4">
+                            <li>Formato e quantidade de dígitos corretos</li>
+                            <li>Cálculo dos dígitos verificadores</li>
+                            <li>Regras específicas para documentos inválidos (números repetidos)</li>
+                            <li>Informações regionais do documento</li>
+                        </ul>
+                        <div class="bg-blue-50 border-l-4 border-blue-600 p-4 rounded">
+                            <div class="flex">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-info-circle text-blue-600"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-sm text-blue-700">
+                                        A validação online não substitui a consulta oficial nos sistemas da Receita Federal para verificar a situação cadastral atual do documento.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="tab-content-faq" class="tab-content hidden">
+                        <h4 class="font-medium text-gray-800 mb-3">Perguntas Frequentes</h4>
+                        <div class="space-y-4">
+                            <div>
+                                <h5 class="font-medium text-gray-700">O sistema armazena meus dados?</h5>
+                                <p class="text-gray-600 text-sm">Não. Toda validação é feita localmente no seu navegador. Nenhum dado é transmitido ou armazenado em nossos servidores.</p>
+                            </div>
+                            <div>
+                                <h5 class="font-medium text-gray-700">A validação garante que o documento existe oficialmente?</h5>
+                                <p class="text-gray-600 text-sm">Não. A validação verifica apenas se o número segue as regras matemáticas de formação. Para verificar a existência oficial, consulte o site da Receita Federal.</p>
+                            </div>
+                            <div>
+                                <h5 class="font-medium text-gray-700">É possível validar vários documentos de uma vez?</h5>
+                                <p class="text-gray-600 text-sm">Atualmente o sistema permite validar um documento por vez, garantindo maior segurança e precisão.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="tab-content-terms" class="tab-content hidden">
+                        <h4 class="font-medium text-gray-800 mb-3">Termos de Uso</h4>
+                        <p class="text-gray-600 text-sm mb-3">
+                            Este serviço é fornecido exclusivamente para fins de verificação matemática da validade de documentos CPF e CNPJ.
+                        </p>
+                        <ul class="list-disc pl-5 text-gray-600 text-sm space-y-2">
+                            <li>O uso deste validador não garante a existência oficial do documento junto aos órgãos governamentais</li>
+                            <li>A ferramenta não armazena, transmite ou processa dados em servidores externos</li>
+                            <li>O serviço é fornecido "como está", sem garantias de qualquer tipo</li>
+                            <li>Ao utilizar este serviço, você concorda com estes termos de uso</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-12 py-8">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <div class="flex items-center">
+                        <div class="bg-blue-600 text-white p-2 rounded-lg mr-3">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-xl font-bold">ValidaDoc</h2>
+                            <p class="text-gray-400 text-sm">Validação segura e confiável</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-4 md:mb-0 text-center">
+                    <div class="flex space-x-2 justify-center">
+                        <a href="https://www.linkedin.com/in/gabrielinojoza/" target="_blank" rel="noopener noreferrer">
+                            <div class="bg-gray-700 hover:bg-gray-600 p-2 rounded-full transition-colors duration-200">
+                                <i class="fab fa-linkedin-in"></i>
+                            </div>
+                        </a>
+                        <a href="https://github.com/Inojoza28" target="_blank" rel="noopener noreferrer">
+                            <div class="bg-gray-700 hover:bg-gray-600 p-2 rounded-full transition-colors duration-200">
+                                <i class="fab fa-github"></i>
+                            </div>
+                        </a>
+                        <a href="https://www.instagram.com/dev_inojoza_/" target="_blank" rel="noopener noreferrer">
+                            <div class="bg-gray-700 hover:bg-gray-600 p-2 rounded-full transition-colors duration-200">
+                                <i class="fab fa-instagram"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="text-center md:text-right">
+                    <p class="text-gray-400 text-sm">&copy; 2025 ValidaDoc. Todos os direitos reservados.</p>
+                    <div class="flex justify-center md:justify-end mt-2">
+                        <i class="fas fa-lock text-green-400 mr-1.5"></i>
+                        <span class="text-gray-300 text-xs">Conexão segura</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/validador.js"></script>
+    <script src="js/documento-info.js"></script>
+</body>
+</html>
